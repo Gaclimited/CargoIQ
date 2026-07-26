@@ -24,7 +24,7 @@ app.get("/health", (req: Request, res: Response) => {
 });
 
 // Routes
-app.use("/", authRoutes); // POST /register, POST /login
+app.use("/", authRoutes);  // POST /register, POST /login
 
 // Routes will be mounted here in later steps, e.g.:
 // app.use("/analyze", tradeAnalysisRoutes);
