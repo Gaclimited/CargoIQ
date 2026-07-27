@@ -1,6 +1,7 @@
 import express, { Application, Request, Response } from "express";
 import cors from "cors";
 import authRoutes from "./routes/auth.routes";
+import tradeAnalysisRoutes from "./routes/tradeAnalysis.routes";
 import { errorHandler, notFoundHandler } from "./middleware/errorHandler";
 
 const app: Application = express();
@@ -24,11 +25,8 @@ app.get("/health", (req: Request, res: Response) => {
 });
 
 // Routes
-app.use("/", authRoutes);  // POST /register, POST /login
-
-// Routes will be mounted here in later steps, e.g.:
-// app.use("/analyze", tradeAnalysisRoutes);
-// app.use("/analysis", tradeAnalysisRoutes);
+app.use("/", authRoutes); // POST /register, POST /login
+app.use("/", tradeAnalysisRoutes); // POST /analyze, GET /analysis, GET /analysis/:id, DELETE /analysis/:id
 
 app.use(notFoundHandler);
 app.use(errorHandler);

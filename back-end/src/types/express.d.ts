@@ -1,13 +1,8 @@
-export interface AuthPayload {
-    id: string;
-    email: string;
-}
+import { AuthPayload } from "./auth.types";
 
-declare global {
-    namespace Express {
-        interface Request {
-            user?: AuthPayload;
-        }
+declare module "express-serve-static-core" {
+    interface Request {
+        user?: AuthPayload;
     }
 }
 
