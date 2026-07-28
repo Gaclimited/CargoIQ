@@ -38,7 +38,7 @@ export function LandingPage() {
             Export with confidence, backed by AI trade analysis
           </h1>
           <p className="mt-5 max-w-xl text-lg text-ink-500">
-            TradeIQ analyzes your product and shipping route to surface HS
+            CargoIQ analyzes your product and shipping route to surface HS
             codes, duty estimates, required documents, and regulations —
             in seconds.
           </p>

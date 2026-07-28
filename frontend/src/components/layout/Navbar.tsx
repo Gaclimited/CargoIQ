@@ -14,11 +14,14 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-40 border-b border-ink-200 bg-white/80 backdrop-blur">
       <div className="container-page flex h-16 items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 font-bold text-ink-900">
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-600 text-white">
-            T
+        <Link
+          to={isAuthenticated ? "/dashboard" : "/"}
+          className="flex items-center gap-2 font-bold text-ink-900"
+        >
+          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-600 text-white font-bold">
+            C
           </span>
-          <span className="text-lg tracking-tight">TradeIQ</span>
+          <span className="text-lg tracking-tight">CargoIQ</span>
         </Link>
 
         <nav className="flex items-center gap-2">
@@ -36,9 +39,22 @@ export function Navbar() {
               >
                 New Analysis
               </Link>
-              <span className="hidden pr-2 text-sm text-ink-400 md:inline-block">
-                {user?.name}
-              </span>
+              <Link
+                to="/account"
+                className="hidden items-center gap-3 transition-opacity hover:opacity-80 md:flex"
+              >
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-600 text-sm font-bold text-white shadow-md">
+                  {user?.name
+                    ?.split(" ")
+                    .map((part) => part[0])
+                    .join("")
+                    .toUpperCase()}
+                </div>
+
+                <span className="text-sm font-medium text-ink-700">
+                  {user?.name}
+                </span>
+              </Link>
               <Button variant="outline" size="sm" onClick={handleLogout}>
                 Logout
               </Button>

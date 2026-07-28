@@ -1,6 +1,6 @@
-# TradeIQ Frontend
+# CargoIQ Frontend
 
-Production-quality React + TypeScript frontend for the TradeIQ AI trade
+Production-quality React + TypeScript frontend for the CargoIQ AI trade
 compliance backend. Built with Vite, Tailwind CSS v4, React Router, Axios,
 and TanStack Query.
 

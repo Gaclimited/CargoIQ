@@ -8,8 +8,8 @@
  * dependency risk.
  */
 
-const TOKEN_KEY = "tradeiq_token";
-const USER_KEY = "tradeiq_user";
+const TOKEN_KEY = "CargoIQ_token";
+const USER_KEY = "CargoIQ_user";
 
 export function getToken(): string | null {
   return localStorage.getItem(TOKEN_KEY);
