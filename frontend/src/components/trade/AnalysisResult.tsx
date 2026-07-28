@@ -3,7 +3,7 @@ import { Card } from "../ui/Card";
 import { Badge } from "../ui/Badge";
 import { Alert } from "../ui/Alert";
 import type { TradeAnalysis } from "../../types/tradeAnalysis.types";
-import { formatTriState, triStateTone } from "../../utils/formatters";
+import { formatTriState, triStateTone, formatDate } from "../../utils/formatters";
 
 function Section({
   title,
@@ -59,6 +59,52 @@ export function AnalysisResult({ analysis }: { analysis: TradeAnalysis }) {
           </div>
         </div>
       </Card>
+
+      {/* Live Verification (Google Search Grounding) */}
+      {ai.verificationTimestamp && (
+        <Card>
+          <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+            <h2 className="text-lg font-semibold text-ink-900">
+              🌐 Live Verification
+            </h2>
+            <Badge tone={ai.liveVerification ? "positive" : "neutral"}>
+              {ai.liveVerification ? "Verified via Google Search" : "Unavailable"}
+            </Badge>
+          </div>
+          <div className="space-y-5">
+            <Section title="Last Verified">
+              <p className="text-sm text-ink-700">
+                {formatDate(ai.verificationTimestamp)}
+              </p>
+            </Section>
+
+            <Section title="Recent Updates">
+              <p className="whitespace-pre-line text-sm text-ink-700">
+                {ai.recentUpdates}
+              </p>
+            </Section>
+
+            {ai.sources && ai.sources.length > 0 && (
+              <Section title="Sources">
+                <ul className="list-inside list-disc space-y-1 text-sm">
+                  {ai.sources.map((source, i) => (
+                    <li key={i}>
+                      <a
+                        href={source.uri}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-brand-700 hover:underline"
+                      >
+                        {source.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </Section>
+            )}
+          </div>
+        </Card>
+      )}
 
       {/* AI Classification */}
       <Card>

@@ -23,6 +23,22 @@ export interface AiTradeAnalysisResult {
   countryRegulations: string;
   aiSuggestions: string;
   confidenceNotes?: string;
+  // --- Google Search Grounding additions ---
+  // Optional because analyses created before this upgrade won't have them.
+  liveVerification?: boolean;
+  recentUpdates?: string;
+  verificationTimestamp?: string;
+  sources?: GroundingSource[];
+  groundingMetadata?: unknown;
+}
+
+/**
+ * A single web source surfaced by Gemini's Google Search grounding tool
+ * (see backend src/services/ai.service.ts -> performLiveVerification).
+ */
+export interface GroundingSource {
+  title: string;
+  uri: string;
 }
 
 /**

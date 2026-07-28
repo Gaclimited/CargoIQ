@@ -17,4 +17,8 @@ export const env = {
     JWT_SECRET: requireEnv("JWT_SECRET"),
     JWT_EXPIRES_IN: process.env.JWT_EXPIRES_IN || "7d",
     GEMINI_API_KEY: requireEnv("GEMINI_API_KEY"),
+    // Optional. Defaults to enabled. Set to "false" to disable Google Search
+    // Grounding (e.g. if your Gemini API tier/quota doesn't support it) without
+    // any code changes — analysis will silently fall back to standard AI-only mode.
+    ENABLE_SEARCH_GROUNDING: process.env.ENABLE_SEARCH_GROUNDING !== "false",
 };

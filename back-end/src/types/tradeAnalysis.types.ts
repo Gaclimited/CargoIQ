@@ -16,4 +16,19 @@ export interface AiTradeAnalysisResult {
     countryRegulations: string;
     aiSuggestions: string;
     confidenceNotes?: string;
+    // --- Google Search Grounding additions ---
+    // Populated by ai.service.ts after a live Google Search verification step.
+    // These are NOT requested from Gemini's structured JSON schema (grounding
+    // tools and responseSchema cannot be combined in a single Gemini request),
+    // they are attached by our own service code once both Gemini calls finish.
+    liveVerification: boolean;
+    recentUpdates: string;
+    verificationTimestamp: string;
+    sources: GroundingSource[];
+    groundingMetadata?: unknown;
+}
+
+export interface GroundingSource {
+    title: string;
+    uri: string;
 }
