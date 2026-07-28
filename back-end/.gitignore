@@ -1,5 +1,15 @@
 node_modules/
 dist/
+
 .env
+.env.*
+
 *.log
+logs/
+
 .DS_Store
+Thumbs.db
+
+.vscode/
+
+prisma/*.db
